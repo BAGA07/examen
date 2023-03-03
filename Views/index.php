@@ -36,7 +36,6 @@ $_GET['save'] = false;
             </div>
         </div>    
     <?php endif ?>
-   
 
     <div>
         <div class="row">
