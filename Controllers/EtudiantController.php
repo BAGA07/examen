@@ -43,7 +43,10 @@ class EtudiantController
     
     public static function read($id)
     {
-        $sql = "SELECT * FROM article WHERE id = ?";
+        $sql = "SELECT *
+        FROM aliment
+        JOIN famille ON aliment.famille_id = famille.id
+        WHERE aliment.nom = "haricots verts"; WHERE id = ?";
         $request = Connexion::db()->prepare($sql);
         $request->execute([$id]);
         $row = $request->fetch();
