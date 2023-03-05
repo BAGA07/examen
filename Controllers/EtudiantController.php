@@ -1,6 +1,6 @@
 <?php
-require($_SERVER['DOCUMENT_ROOT'] . '/examen/models/Etudiant.php');
-require($_SERVER['DOCUMENT_ROOT'] . '/examen/DataBase/Connexion.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/examen_atelier/models/Etudiant.php');
+require($_SERVER['DOCUMENT_ROOT'] . '/examen_atelier/DataBase/Connexion.php');
 
 class EtudiantController
 {
@@ -16,37 +16,51 @@ class EtudiantController
             $etudiant->nom = $row['nom'];
             $etudiant->prenom = $row['prenom'];
             $etudiant->adresse = $row['adresse'];
+            $etudiant->date_naissance = $row['date_naissance'];
+            $etudiant->email = $row['email'];
+            $etudiant->telephone = $row['telephone'];
 
             $etudiants[] = $etudiant;
         }
-        var_dump($etudiants);
-        die;
         return $etudiants;
     }
-    /*  public static function create(Article $article)
+   public static function create(Etudiant $etudiant)
     {
-        $sql = "INSERT INTO etudiant(titre,description,price) VALUES (?,?,?)";
+        $sql = "INSERT INTO etudiant(nom,prenom,adresse,date_naissance,email,telephone) VALUES (?,?,?,?,?,?)";
         $request = Connexion::db()->prepare($sql);
         return $request->execute([
-            $article->titre,
-            $article->description,
-            $article->price,
+            $etudiant->nom,
+            $etudiant->prenom,
+            $etudiant->adresse,
+            $etudiant->date_naissance,
+            $etudiant->email,
+            $etudiant->telephone,
         ]);
-    }
+    } 
+    
+    
+    
+    
     public static function read($id)
     {
         $sql = "SELECT * FROM article WHERE id = ?";
         $request = Connexion::db()->prepare($sql);
         $request->execute([$id]);
         $row = $request->fetch();
-        $article = new Article;
-        $article->id = $row['id'];
-        $article->titre = $row['titre'];
-        $article->description = $row['description'];
-        $article->price = $row['price'];
+        $etudiant = new Etudiant;
+        $etudiant->id = $row['id'];
+        $etudiant->nom = $row['nom'];
+        $etudiant->prenom = $row['prenom'];
+        $etudiant->adresse = $row['adresse'];
+        $etudiant->date_naissance = $row['date_naissance'];
+        $etudiant->email = $row['email'];
+        $etudiant->telephone = $row['telephone'];
 
-        return $article;
+        return $etudiant;
     }
+    
+    
+    /* 
     public static function update(Article $article)
     {
         $sql = "UPDATE article SET titre=?, description=?, price=? WHERE id=?";
@@ -79,3 +93,4 @@ class EtudiantController
         return $article;
     } */
 }
+?>
