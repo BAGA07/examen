@@ -40,7 +40,7 @@ class EtudiantController
     
     
     
-    
+    /*  
     public static function read($id)
     {
         $sql = "SELECT *
@@ -63,7 +63,7 @@ class EtudiantController
     }
     
     
-    /* 
+   
     public static function update(Article $article)
     {
         $sql = "UPDATE article SET titre=?, description=?, price=? WHERE id=?";
